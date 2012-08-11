@@ -5,8 +5,8 @@
 [hub]
         protocol = https
 [user]
-        name = Zach Holman
-        email = zach@zachholman.com
+        name = Leroux Cifer
+        email = leroux@fezrev.com
 [credential]
         helper = osxkeychain
 [alias]
