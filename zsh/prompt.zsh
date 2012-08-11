@@ -53,9 +53,9 @@ rb_prompt(){
 # command line. I filter it to only count those tagged as "+next", so it's more
 # of a motivation to clear out the list.
 todo(){
-  if $(which todo.sh &> /dev/null)
+  if $(which /usr/local/bin/todo.sh &> /dev/null)
   then
-    num=$(echo $(todo.sh ls +next | wc -l))
+    num=$(echo $(/usr/local/bin/todo.sh ls +next | wc -l))
     let todos=num-2
     if [ $todos != 0 ]
     then
