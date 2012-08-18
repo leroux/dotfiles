@@ -2,7 +2,7 @@
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/code
+export PROJECTS=~/Code
 
 # path to work 
 export WORK=~/data/work
@@ -23,3 +23,7 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
+
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export AWS_IAM_HOME="/usr/local/Cellar/aws-iam-tools/1.5.0/jars"
+export AWS_CREDENTIAL_FILE=$HOME/.aws-credentials-master
