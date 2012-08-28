@@ -58,7 +58,7 @@
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
+        let g:spf13_bundle_groups=['general', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'go', 'misc']
     endif
 
     " To override all the included bundles, put
@@ -134,6 +134,11 @@
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
+        endif
+
+    " Go
+        if count(g:spf13_bundle_groups, 'go')
+            Bundle 'anzaika/go.vim'
         endif
 
     " Misc
@@ -588,7 +593,9 @@ function! InitializeDirectories()
         endif
     endfor
 endfunction
-call InitializeDirectories()
+" Removed this call because it was messing with syntax highlighting for some
+" reason.
+"call InitializeDirectories()
 
 function! NERDTreeInitAsNeeded()
     redir => bufoutput
