@@ -1,1 +1,1 @@
-export PATH=$PATH:$HOME/Code/patfair/ucpp
+export PATH=$PATH:$PROJECTS/patfair/ucpp/ucpp
