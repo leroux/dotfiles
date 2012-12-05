@@ -5,7 +5,7 @@
 [hub]
         protocol = https
 [user]
-        name = Leroux Cifer
+	name = Leroux Cifer
         email = leroux@fezrev.com
 [credential]
         helper = osxkeychain
@@ -31,3 +31,5 @@
         prompt = false
 [help]
         autocorrect = 1
+[push]
+	default = simple
