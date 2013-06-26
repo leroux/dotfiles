@@ -16,3 +16,11 @@ export PATH=$PATH:$HOME/bin/gcc-arm-none-eabi-4_7-2013q1/bin
 export PATH=$PATH:$HOME/.cabal/bin
 
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+# tranquil
+export PATH=$PATH:/usr/local/tranquil/bin
+
+export PATH=$PATH:~/src/hsandbox
+
+# Go
+export PATH=$PATH:$GOPATH/bin

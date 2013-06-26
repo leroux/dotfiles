@@ -10,3 +10,6 @@ then
 fi
 
 alias /q='exit'
+
+alias e=emacsclient -t
+alias ec=emacsclient -c

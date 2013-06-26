@@ -1,0 +1,10 @@
+[user]
+	name = Muhaimin Ahsan
+	email = leroux@fezrev.com
+[core]
+	autocrlf = input
+	excludesfile = ~/.gitignore
+[push]
+	default = simple
+[alias]
+  lg = "log --oneline --decorate --all --graph -30"
