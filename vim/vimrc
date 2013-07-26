@@ -1,0 +1,86 @@
+call pathogen#infect()
+call pathogen#helptags()
+ 
+syntax on
+filetype plugin indent on
+set background=dark
+"colorscheme wombat256mod
+colorscheme delph
+ 
+set nocompatible
+set enc=utf-8
+set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+set number
+set mouse=a
+set mousehide
+set nohlsearch
+set showmatch
+set incsearch
+set ignorecase
+set wrap
+set linebreak
+set listchars=tab:→\ ,trail:·,nbsp:·
+set list
+set history=1000
+set cursorline
+
+" Tab specific option
+set tabstop=4                   "A tab is 8 spaces
+set expandtab                   "Always uses spaces instead of tabs
+set softtabstop=2               "Insert 4 spaces when tab is pressed
+set shiftwidth=2                "An indent is 4 spaces
+set autoindent
+set smartindent
+set smarttab                    "Indent instead of tab at start of line
+set shiftround                  "Round spaces to nearest shiftwidth multiple
+set nojoinspaces                "Don't convert spaces to tabs
+
+" airline
+set laststatus=2
+let g:airline_enable_fugitive = 1
+let g:airline_enable_syntastic = 1
+let g:airline_theme = 'badwolf'
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+
+" vim2hs
+let g:haskell_conceal_wide = 1
+let g:haskell_multiline_strings = 1
+let g:hpaste_author = 'leroux'
+
+" haskellmode
+au Bufenter *.hs compiler ghc
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
+
+" hdevtools
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+let g:hdevtools_options = '-g-isrc -g-Wall'
+
+" haskellConceal
+let g:no_haskell_conceal = 0
+let g:extraConceal = 1
+
+" neco-ghc
+let g:necoghc_enable_detailed_browse = 1
+
+" Haskell SHIM
+autocmd FileType haskell nmap <C-c><C-l> :GhciRange<CR>
+autocmd FileType haskell vmap <C-c><C-l> :GhciRange<CR>
+autocmd FileType haskell nmap <C-c><C-f> :GhciFile<CR>
+autocmd FileType haskell nmap <C-c><C-r> :GhciReload<CR>
+
+" vim-slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
+
+" ocp-indent
+autocmd FileType ocaml source /Users/leroux/.opam/4.01.0dev+trunk/share/typerex/ocp-indent/ocp-indent.vim
+
+" rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

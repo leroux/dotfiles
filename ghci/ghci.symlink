@@ -1,0 +1,24 @@
+import Control.Applicative
+import Control.Monad
+import Control.Concurrent
+import Control.Concurrent.Async
+import Control.Parallel
+
+import Data.String
+import Data.Char
+import Data.List
+import Data.Monoid
+import Control.Monad.IO.Class
+
+import Test.QuickCheck.Test
+
+-- You must set your prompt to a lambda, it's a law.
+:set prompt "λ: "
+
+-- Type information
+:set +t
+
+:set -fno-warn-unused-imports -XNoMonomorphismRestriction
+:def hlint const . return $ ":! hlint \"src\""
+:def search \s -> return $ ":! hoogle --count=15 --color \"" ++ s ++ "\""
+:def doc \s -> return $ ":! hoogle --count=15 --color --info \"" ++ s ++ "\""
