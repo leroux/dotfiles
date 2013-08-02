@@ -1,3 +1,5 @@
+alias git='hub'
+
 alias gs='git status'
 alias gl='git lg'
 alias gr='git reflog'

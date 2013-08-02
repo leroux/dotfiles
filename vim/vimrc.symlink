@@ -8,7 +8,7 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible                "Turn off vi compatibility
 set langmenu=none               "Set all the menu's to use English
-colorscheme delph               "Use custom colour scheme
+colorscheme wombat256mod        "Use custom colour scheme
 if has("autocmd")
     "Clear all autocommands to avoid duplicates, has to be on empty line
     autocmd!
@@ -17,8 +17,6 @@ endif
 set nomodeline                  "Exploitable, should be off
 set ruler                       "Show cursor position
 set hidden                      "Don't force me to save before changing buffers
-set list                        "Show hidden characters
-set listchars=tab:»»,trail:·    "What to show instead of characters
 set magic                       "Commands treat backslash escaped chars as
 
 set clipboard+=unnamed          "Let me paste directly from Windows clipboard
@@ -43,9 +41,10 @@ set wildmenu                    "Show all auto-completion options
 " Tab specific option
 set tabstop=8                   "A tab is 8 spaces
 set expandtab                   "Always uses spaces instead of tabs
-set softtabstop=4               "Insert 4 spaces when tab is pressed
-set shiftwidth=4                "An indent is 4 spaces
+set softtabstop=2              "Insert 4 spaces when tab is pressed
+set shiftwidth=2                "An indent is 4 spaces
 set smarttab                    "Indent instead of tab at start of line
+set smartindent
 set shiftround                  "Round spaces to nearest shiftwidth multiple
 set nojoinspaces                "Don't convert spaces to tabs
 
@@ -59,7 +58,7 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch                "Highlight all search matches if color is
 endif                           "possible (:noh to toggle off)
 
-set gdefault                    "Substitution affect all matches on a line
+"set gdefault                    "Substitution affect all matches on a line
 "Remap return key to toggle highlight off when pressing enter in command mode.
 nnoremap <silent> <return> :noh<return>
 
@@ -94,19 +93,19 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous options                                                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if &t_Co > 2 || has("gui_running")  "Match characters past column 79 to mark
-    match LineTooLong /\%>79v.\+/   "as red.
-endif
+"if &t_Co > 2 || has("gui_running")  "Match characters past column 79 to mark
+"    match LineTooLong /\%>79v.\+/   "as red.
+"endif
 
 " English spell checking, turn off by default except for TeX/LaTeX files.
-"if version >= 700
-"    set spl=en spell
-"    set nospell
-"    if has("autocmd")
-"        autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal spell
-"        autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal nonumber
-"    endif
-"endif
+if version >= 700
+    set spl=en spell
+    set nospell
+    if has("autocmd")
+        autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal spell
+        autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal nonumber
+    endif
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Language options                                                            "
@@ -166,6 +165,8 @@ let g:tagbar_sort = 0
 
 " HdevTools options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:hdevtools_options = '-g-isrc -Wall'
+
 nnoremap <silent> <Tab> :HdevtoolsType<return>
 
 function! ToggleType()
@@ -180,12 +181,13 @@ nnoremap <silent> <return> :noh<return>:call ToggleType()<return>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_echo_current_error = 0
-let g:syntastic_haskell_hdevtools_args = "-g-fno-warn-wrong-do-bind -g-ishared"
+let g:syntastic_haskell_hdevtools_args = '-g-Wall -g-fno-warn-wrong-do-bind'
+let g:syntastic_haskell_ghc_mod_args = '-g-Wall -g-fno-warn-unused-binds -g-fwarn-incomplete-patterns'
 let g:syntastic_error_list_is_open = 0
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
-
+let g:syntastic_always_populate_loc_list=1
 
 function! GetNextSyntasticError(next)
     " If there's only one error, jump to it.
@@ -272,12 +274,8 @@ let g:neocomplcache_enable_at_startup = 1
 au Bufenter *.hs compiler ghc
 let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
+let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
 
 " ocp-indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType ocaml source /Users/leroux/.opam/4.01.0dev+trunk/share/typerex/ocp-indent/ocp-indent.vim
-
-" vim2hs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:haskell_tabular = 1
-let g:haskell_autotags = 1
