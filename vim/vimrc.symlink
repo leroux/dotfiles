@@ -1,14 +1,64 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Options                                                              "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Load Pathogen to deal with plugins
-call pathogen#infect()
-"call pathogen#helptags()
+set nocompatible                "Turn off vi compatibility
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible                "Turn off vi compatibility
+" Bundles
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'gmarik/vundle'
+
+" General
+Bundle 'Raimondi/delimitMate'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
+Bundle 'bling/vim-airline'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'jpalardy/vim-slime'
+Bundle 'tpope/vim-surround'
+Bundle 'kana/vim-textobj-indent'
+Bundle 'kana/vim-textobj-user'
+Bundle 'Shougo/vimproc.vim'
+
+" Haskell
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'merijn/haskellFoldIndent'
+Bundle 'https://github.com/lukerandall/haskellmode-vim.git'
+Bundle 'pbrisbin/html-template-syntax'
+Bundle 'bitc/lushtags'
+Bundle 'ujihisa/neco-ghc'
+Bundle 'Twinside/vim-haskellFold'
+Bundle 'tpope/vim-markdown'
+Bundle 'dag/vim2hs'
+
+" OCaml
+Bundle 'jrk/vim-ocaml'
+Bundle 'MnO2/vim-ocaml-conceal'
+Bundle 'simonjbeaumont/vim-ocamlspot'
+
+" C
+Bundle 'vim-scripts/c.vim'
+
+" Coq
+Bundle 'vim-scripts/CoqIDE'
+Bundle 'jvoorhis/coq.vim'
+
+" Python
+Bundle 'klen/python-mode'
+
+" Coffeescript
+Bundle 'kchmck/vim-coffee-script'
+
 set langmenu=none               "Set all the menu's to use English
-colorscheme wombat256mod        "Use custom colour scheme
+"colorscheme wombat256mod       "Use custom colour scheme
+colorscheme solarized
+set background=dark
 if has("autocmd")
     "Clear all autocommands to avoid duplicates, has to be on empty line
     autocmd!
@@ -75,7 +125,7 @@ set wildignore+=*.lof,*.log,*.lot,*.toc,*.pdf,*.hi
 set number                      "Enable line numbers
 
 if &t_Co > 2 || has("gui_running")
-    syntax on                   "Turn on syntax highlighting
+    syntax enable                   "Turn on syntax highlighting
 endif
 
 " Folding options
@@ -181,13 +231,13 @@ nnoremap <silent> <return> :noh<return>:call ToggleType()<return>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_echo_current_error = 0
-let g:syntastic_haskell_hdevtools_args = '-g-Wall -g-fno-warn-wrong-do-bind'
-let g:syntastic_haskell_ghc_mod_args = '-g-Wall -g-fno-warn-unused-binds -g-fwarn-incomplete-patterns'
+let g:syntastic_haskell_hdevtools_args = '-g-Wall'
+let g:syntastic_haskell_ghc_mod_args = '-g-Wall -g-fno-warn-unused-binds -g-fno-warn-missing-signatures'
 let g:syntastic_error_list_is_open = 0
-let g:syntastic_check_on_open=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open = 0
+let g:syntastic_auto_jump = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
 
 function! GetNextSyntasticError(next)
     " If there's only one error, jump to it.
@@ -279,3 +329,7 @@ let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
 " ocp-indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType ocaml source /Users/leroux/.opam/4.01.0dev+trunk/share/typerex/ocp-indent/ocp-indent.vim
+
+" CoqIDE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:CoqIDEDefaultMap = 1

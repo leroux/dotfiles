@@ -1,16 +1,16 @@
 [user]
-	name = Muhaimin Ahsan
-	email = leroux@fezrev.com
+  name = Muhaimin Ahsan
+  email = leroux@fezrev.com
 [core]
-	autocrlf = false
-	excludesfile = ~/.gitignore
+  autocrlf = false
+  excludesfile = ~/.gitignore
 [push]
-	default = simple
+  default = simple
 [alias]
   lg = "log --oneline --decorate --all --graph -30"
 [diff]
-	ignoreSubmodules = dirty
+  ignoreSubmodules = dirty
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [color]
-	ui = true
+  ui = true

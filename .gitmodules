@@ -1,0 +1,3 @@
+[submodule "vim/vim.symlink/bundle/c.vi"]
+	path = vim/vim.symlink/bundle/c.vi
+	url = https://github.com/vim-scripts/c.vim.git
