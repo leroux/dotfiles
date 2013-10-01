@@ -1,14 +1,10 @@
-export PATH="./bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/local/sbin:$HOME/.sfs:$ZSH/bin:$PATH"
+export PATH=~/bin:$ZSH/bin:$PATH
 export PATH=$PATH:/usr/local/share/npm/bin
-export PATH=$PATH:$HOME/.cabal/bin
 export PATH=$PATH:$GOPATH/bin
-
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
-# tranquil
-export PATH=$PATH:/usr/local/tranquil/bin
+# GHC - Need the ghc path prepended to PATH so that system selects them over homebrew binaries.
+export PATH=$HOME/.cabal/bin:$PATH
 
-export PATH=$PATH:~/src/hsandbox
-
-# Go
-export PATH=$PATH:$GOPATH/bin
+# ghc-dev
+export PATH=$PATH:$HOME/ghc/bin

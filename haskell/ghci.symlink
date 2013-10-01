@@ -1,16 +1,6 @@
-import Control.Applicative
-import Control.Monad
-import Control.Concurrent
-import Control.Concurrent.Async
-import Control.Parallel
-
 import Data.String
 import Data.Char
 import Data.List
-import Data.Monoid
-import Control.Monad.IO.Class
-
-import Test.QuickCheck.Test
 
 -- You must set your prompt to a lambda, it's a law.
 :set prompt "λ: "
@@ -22,20 +12,3 @@ import Test.QuickCheck.Test
 :def hlint const . return $ ":! hlint \"src\""
 :def search \s -> return $ ":! hoogle --count=15 --color \"" ++ s ++ "\""
 :def doc \s -> return $ ":! hoogle --count=15 --color --info \"" ++ s ++ "\""
-
-:m - Prelude
-:m + GOA
-setLambdabotHome "/Users/leroux/.cabal/bin"
-:def bs        lambdabot "botsnack"
-:def pl        lambdabot "pl"
-:def unpl      lambdabot "unpl"
-:def redo      lambdabot "redo"
-:def undo      lambdabot "undo"
-:def index     lambdabot "index"
-:def docs      lambdabot "docs"
-:def instances lambdabot "instances"
-:def hoogle    lambdabot "hoogle"
-:def source    lambdabot "fptools"
-:def where     lambdabot "where"
-:def version   lambdabot "version"
-:def src       lambdabot "src"

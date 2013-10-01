@@ -1,5 +1,6 @@
 set nocompatible                "Turn off vi compatibility
 filetype off
+set encoding=utf-8
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -25,17 +26,20 @@ Bundle 'tpope/vim-surround'
 Bundle 'kana/vim-textobj-indent'
 Bundle 'kana/vim-textobj-user'
 Bundle 'Shougo/vimproc.vim'
+Bundle 'scrooloose/nerdcommenter'
 
 " Haskell
-Bundle 'eagletmt/ghcmod-vim'
+"Bundle 'eagletmt/ghcmod-vim'
 Bundle 'merijn/haskellFoldIndent'
 Bundle 'https://github.com/lukerandall/haskellmode-vim.git'
-Bundle 'pbrisbin/html-template-syntax'
+"Bundle 'pbrisbin/html-template-syntax'
 Bundle 'bitc/lushtags'
 Bundle 'ujihisa/neco-ghc'
 Bundle 'Twinside/vim-haskellFold'
 Bundle 'tpope/vim-markdown'
 Bundle 'dag/vim2hs'
+"Bundle 'https://github.com/frerich/unicode-haskell.git'
+"Bundle 'https://github.com/Twinside/vim-haskellConceal.git'
 
 " OCaml
 Bundle 'jrk/vim-ocaml'
@@ -46,8 +50,8 @@ Bundle 'simonjbeaumont/vim-ocamlspot'
 Bundle 'vim-scripts/c.vim'
 
 " Coq
-Bundle 'vim-scripts/CoqIDE'
-Bundle 'jvoorhis/coq.vim'
+"Bundle 'vim-scripts/CoqIDE'
+"Bundle 'jvoorhis/coq.vim'
 
 " Python
 Bundle 'klen/python-mode'
@@ -56,8 +60,7 @@ Bundle 'klen/python-mode'
 Bundle 'kchmck/vim-coffee-script'
 
 set langmenu=none               "Set all the menu's to use English
-"colorscheme wombat256mod       "Use custom colour scheme
-colorscheme solarized
+colorscheme herald
 set background=dark
 if has("autocmd")
     "Clear all autocommands to avoid duplicates, has to be on empty line
@@ -69,24 +72,27 @@ set ruler                       "Show cursor position
 set hidden                      "Don't force me to save before changing buffers
 set magic                       "Commands treat backslash escaped chars as
 
+set nobackup
+set noswapfile
+
 set clipboard+=unnamed          "Let me paste directly from Windows clipboard
 set lazyredraw                  "Don't update screen during macro's, etc.
 if has("mouse")
     set mouse=a                 "Allow mouse in all modes except insert
 endif
 set confirm                     "Prompt save confirmation instead of returning
-                                "error for command
 
 let mapleader = "\<C-g>"             "Map leader key
 "Y behaves as D and C rather than yy
 noremap Y y$
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Edit options                                                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=5                 "Keep this many lines visible at top/bottom
 set bs=indent,eol,start         "Turn on backspace in insert mode
-set textwidth=79                "Maximum linewidth
+"set textwidth=79                "Maximum linewidth
 set wildmenu                    "Show all auto-completion options
 " Tab specific option
 set tabstop=8                   "A tab is 8 spaces
@@ -97,7 +103,7 @@ set smarttab                    "Indent instead of tab at start of line
 set smartindent
 set shiftround                  "Round spaces to nearest shiftwidth multiple
 set nojoinspaces                "Don't convert spaces to tabs
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search options                                                              "
@@ -236,7 +242,7 @@ let g:syntastic_haskell_hdevtools_args = '-g-Wall'
 let g:syntastic_haskell_ghc_mod_args = '-g-Wall -g-fno-warn-unused-binds -g-fno-warn-missing-signatures'
 let g:syntastic_error_list_is_open = 0
 let g:syntastic_check_on_open = 0
-let g:syntastic_auto_jump = 1
+let g:syntastic_auto_jump = 0
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_always_populate_loc_list = 1
 
@@ -329,8 +335,8 @@ let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
 
 " ocp-indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType ocaml source /Users/leroux/.opam/4.01.0dev+trunk/share/typerex/ocp-indent/ocp-indent.vim
+autocmd FileType ocaml source /Users/leroux/.opam/system/share/typerex/ocp-indent/ocp-indent.vim
 
-" CoqIDE
+" Coq
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:CoqIDEDefaultMap = 1
